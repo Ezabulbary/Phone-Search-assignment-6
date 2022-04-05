@@ -51,9 +51,9 @@ const loadDetails = phoneslug => {
 }
 
 const displayDetails = phone => {
+    console.log(phone)
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.textContent = '';
-
     const div = document.createElement('div');
     div.innerHTML = `
     <div class="card">
@@ -65,8 +65,20 @@ const displayDetails = phone => {
             <p class="card-text">DisplaySize: ${phone.mainFeatures.displaySize}</p>
             <p class="card-text">Memory: ${phone.mainFeatures.memory}</p>
             <p class="card-text">Storage: ${phone.mainFeatures.storage}</p>
+            <p class="card-text">Sensors: ${phone.mainFeatures.sensors}</p>
+            <p class="card-text">Others: ${phone.mainFeatures.others}</p>
+
         </div>
     </div>
     `;
     phoneDetails.appendChild(div);
 }
+
+/*             
+            <p class="card-text">GPS: ${phone.mainFeatures.others.GPS}</p>
+            <p class="card-text">NFC: ${phone.mainFeatures.others.NFC}</p>
+            <p class="card-text">Radio: ${phone.mainFeatures.others.Radio}</p>
+            <p class="card-text">USB: ${phone.mainFeatures.others.USB}</p>
+            <p class="card-text">WLAN: ${phone.mainFeatures.others.WLAN}</p> 
+
+*/
