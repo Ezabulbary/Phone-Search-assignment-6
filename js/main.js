@@ -41,3 +41,15 @@ const displayPhone = (phones) => {
         displaContainar.appendChild(div);
     })
 }
+
+const loadDetails = phoneSlug => {
+    console.log(phoneSlug);
+    const url = `https://openapi.programming-hero.com/api/phone/${phoneSlug}`;
+    fetch(url)
+    .then(res => res.json())
+        .then(data => displayDetails(data))
+}
+
+const displayDetails = phone => {
+    console.log(phone)
+}
