@@ -16,7 +16,7 @@ const searchPhone = () => {
     }
 }
 
-const displayPhone = (phones) => {
+const displayPhone = phones => {
     const displaContainar = document.getElementById('displa-containar');
     displaContainar.textContent = '';
     if (phones.length == 0) {
@@ -35,21 +35,38 @@ const displayPhone = (phones) => {
                 <h5 class="card-title">${phone.phone_name}</h5>
                 <p class="card-text">${phone.brand}</p>
             </div>
-            <button onclick="loadDetails(${phone.slug})" class="mx-auto w-50 rounded-3">Details</button>
+            <button onclick="loadDetails('${phone.slug}')" class="mx-auto w-50 rounded-3">Details</button>
         </div>
         `;
         displaContainar.appendChild(div);
     })
 }
 
-const loadDetails = phoneSlug => {
-    console.log(phoneSlug);
-    const url = `https://openapi.programming-hero.com/api/phone/${phoneSlug}`;
+
+const loadDetails = phoneslug => {
+    const url = `https://openapi.programming-hero.com/api/phone/${phoneslug}`;
     fetch(url)
     .then(res => res.json())
-        .then(data => displayDetails(data))
+        .then(data => displayDetails(data.data))
 }
 
 const displayDetails = phone => {
-    console.log(phone)
+    const phoneDetails = document.getElementById('phone-details');
+    phoneDetails.textContent = '';
+
+    const div = document.createElement('div');
+    div.innerHTML = `
+    <div class="card">
+        <img src="${phone.image}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">${phone.name}</h5>
+            <p class="card-text">${phone.releaseDate}</p>
+            <p class="card-text">ChipSet: ${phone.mainFeatures.chipSet}</p>
+            <p class="card-text">DisplaySize: ${phone.mainFeatures.displaySize}</p>
+            <p class="card-text">Memory: ${phone.mainFeatures.memory}</p>
+            <p class="card-text">Storage: ${phone.mainFeatures.storage}</p>
+        </div>
+    </div>
+    `;
+    phoneDetails.appendChild(div);
 }
