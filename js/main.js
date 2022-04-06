@@ -59,14 +59,14 @@ const displayDetails = phone => {
     <div class="card">
         <img src="${phone.image}" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">${phone.name}</h5>
-            <p class="card-text">${phone.releaseDate}</p>
-            <p class="card-text">ChipSet: ${phone.mainFeatures.chipSet}</p>
-            <p class="card-text">DisplaySize: ${phone.mainFeatures.displaySize}</p>
-            <p class="card-text">Memory: ${phone.mainFeatures.memory}</p>
-            <p class="card-text">Storage: ${phone.mainFeatures.storage}</p>
-            <p class="card-text">Sensors: ${phone.mainFeatures.sensors}</p>
-            <p class="card-text">Others: ${phone.mainFeatures.others}</p>
+            <h5 class="card-title">Name: ${phone.name}</h5>
+            <p class="card-text">Release Date: ${phone.releaseDate ? (phone.releaseDate) : ('No release Date Found.')}</p>
+            <p class="card-text">Chip Set: ${phone.mainFeatures?.chipSet}</p>
+            <p class="card-text">Display Size: ${phone.mainFeatures?.displaySize}</p>
+            <p class="card-text">Memory: ${phone.mainFeatures?.memory}</p>
+            <p class="card-text">Storage: ${phone.mainFeatures?.storage}</p>
+            <p class="card-text">Sensors: ${phone.mainFeatures?.sensors}</p>
+            <p class="card-text">Bluetooth: ${phone.mainFeatures?.others?.Bluetooth}</p>
 
         </div>
     </div>
