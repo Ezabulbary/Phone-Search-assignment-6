@@ -10,6 +10,7 @@ const searchPhone = () => {
         keywordError.style.display = 'none';
     }
     else{
+        document.getElementById('phone-details').textContent = '';
         const url = `https://openapi.programming-hero.com/api/phones?search=${inputText}`
         fetch(url)
             .then(res => res.json())
