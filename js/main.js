@@ -1,3 +1,4 @@
+// search phone input field
 const searchPhone = () => {
     const inputField = document.getElementById('search-input');
     const inputText = inputField.value;
@@ -16,6 +17,7 @@ const searchPhone = () => {
     }
 }
 
+// display phone 
 const displayPhone = phones => {
     const displaContainar = document.getElementById('displa-containar');
     displaContainar.textContent = '';
@@ -42,7 +44,7 @@ const displayPhone = phones => {
     })
 }
 
-
+// lode detail section 
 const loadDetails = phoneslug => {
     const url = `https://openapi.programming-hero.com/api/phone/${phoneslug}`;
     fetch(url)
@@ -50,8 +52,8 @@ const loadDetails = phoneslug => {
         .then(data => displayDetails(data.data))
 }
 
+// display details section 
 const displayDetails = phone => {
-    console.log(phone)
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.textContent = '';
     const div = document.createElement('div');
@@ -66,19 +68,14 @@ const displayDetails = phone => {
             <p class="card-text">Memory: ${phone.mainFeatures?.memory}</p>
             <p class="card-text">Storage: ${phone.mainFeatures?.storage}</p>
             <p class="card-text">Sensors: ${phone.mainFeatures?.sensors}</p>
-            <p class="card-text">Bluetooth: ${phone.mainFeatures?.others?.Bluetooth}</p>
-
+            <p class="card-text">Bluetooth: ${phone.others?.Bluetooth ? (phone.others?.Bluetooth) : ('No Bluetooth Date Found.')}</p>
+            <p class="card-text">GPS: ${phone.others?.GPS ? (phone.others?.GPS) : ('No GPS Date Found.')}</p>
+            <p class="card-text">NFC: ${phone.others?.NFC ? (phone.others?.NFC) : ('No NFC Date Found.')}</p>
+            <p class="card-text">Radio: ${phone.others?.Radio ? (phone.others?.Radio) : ('No Radio Date Found.')}</p>
+            <p class="card-text">USB: ${phone.others?.USB ? (phone.others?.USB) : ('No USB Date Found.')}</p>
+            <p class="card-text">WLAN: ${phone.others?.WLAN ? (phone.others?.WLAN) : ('No WLAN Date Found.')}</p>
         </div>
     </div>
     `;
     phoneDetails.appendChild(div);
 }
-
-/*             
-            <p class="card-text">GPS: ${phone.mainFeatures.others.GPS}</p>
-            <p class="card-text">NFC: ${phone.mainFeatures.others.NFC}</p>
-            <p class="card-text">Radio: ${phone.mainFeatures.others.Radio}</p>
-            <p class="card-text">USB: ${phone.mainFeatures.others.USB}</p>
-            <p class="card-text">WLAN: ${phone.mainFeatures.others.WLAN}</p> 
-
-*/
